@@ -8,6 +8,7 @@ int main(){
   pipe(p1);
   pipe(p2);
   char buff[] = {'X'};
+  // long length = sizeof(buff);
   if(fork()==0){
     close(p1[1]);//关闭写端
     close(p2[0]);
@@ -21,6 +22,7 @@ int main(){
 
   }else{
     close(p1[0]);
+    
     write(p1[1],buff,1);
     close(p2[1]);
     read(p2[0],buff,1);
